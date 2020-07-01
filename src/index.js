@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'antd/dist/antd.css';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+import Amplify from 'aws-amplify';
+import config from './aws-exports';
+import { AmazonAIPredictionsProvider } from '@aws-amplify/predictions';
+
+Amplify.configure(config);
+
+Amplify.addPluggable(new AmazonAIPredictionsProvider());
 
 ReactDOM.render(
   <React.StrictMode>

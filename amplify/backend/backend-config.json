@@ -1,0 +1,18 @@
+{
+	"auth": {
+		"imgtext6a454452": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	},
+	"predictions": {
+		"identifyText2851e75f": {
+			"providerPlugin": "awscloudformation",
+			"service": "RekognitionAndTextract",
+			"dependsOn": [],
+			"identifyType": "identifyText"
+		}
+	}
+}
