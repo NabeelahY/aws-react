@@ -1,0 +1,56 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-imgtext-dev-80446-authRole",
+			"UnauthRoleArn": "arn:aws:iam::253377625372:role/amplify-imgtext-dev-80446-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::253377625372:role/amplify-imgtext-dev-80446-authRole",
+			"Region": "us-east-1",
+			"DeploymentBucketName": "amplify-imgtext-dev-80446-deployment",
+			"UnauthRoleName": "amplify-imgtext-dev-80446-unauthRole",
+			"StackName": "amplify-imgtext-dev-80446",
+			"StackId": "arn:aws:cloudformation:us-east-1:253377625372:stack/amplify-imgtext-dev-80446/2af91ab0-bb69-11ea-acdb-0ea6b7109c22",
+			"AmplifyAppId": "d15mzgyv498byw"
+		}
+	},
+	"auth": {
+		"imgtext6a454452": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false,
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-imgtext-dev-80446-deployment/amplify-cfn-templates/auth/imgtext6a454452-cloudformation-template.yml",
+				"logicalId": "authimgtext6a454452"
+			},
+			"lastPushTimeStamp": "2020-07-01T07:10:38.014Z",
+			"output": {
+				"AppClientSecret": "55cao8tjtlrj8vohill4cdatas0ptk8cghfprqfgu0291i6g7rq",
+				"UserPoolId": "us-east-1_BR3fwXNEA",
+				"AppClientIDWeb": "11m9vnv38116bc5kvmqfvvugrn",
+				"AppClientID": "4elj698kbbimbqhlfd2ibeekaq",
+				"IdentityPoolId": "us-east-1:695c9fd9-315c-4721-b7c4-d8bac45a3aba",
+				"IdentityPoolName": "imgtext6a454452_identitypool_6a454452__dev",
+				"UserPoolName": "imgtext6a454452_userpool_6a454452"
+			},
+			"lastPushDirHash": "1EvqpHXBtMARqQbMnwuoJ7OxtiM="
+		}
+	},
+	"predictions": {
+		"identifyText2851e75f": {
+			"providerPlugin": "awscloudformation",
+			"service": "RekognitionAndTextract",
+			"dependsOn": [],
+			"identifyType": "identifyText",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-imgtext-dev-80446-deployment/amplify-cfn-templates/predictions/identifyText2851e75f-template.json",
+				"logicalId": "predictionsidentifyText2851e75f"
+			},
+			"lastPushTimeStamp": "2020-07-01T07:10:38.014Z",
+			"output": {
+				"format": "ALL",
+				"region": "us-east-1"
+			},
+			"lastPushDirHash": "jsBMY42MwpPMCXn+ko7GKsXbdOE="
+		}
+	}
+}
