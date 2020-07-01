@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Predictions } from 'aws-amplify';
 
 function App() {
+  const [res, setRes] = useState('');
+
+  const identify = async (event) => {
+    setRes('Identifying');
+    const {
+      target: { files },
+    } = event;
+
+    const file = files[0];
+    const data = await Predictions.identify({
+      text: { source: { file }, format: 'PLAIN' },
+    });
+
+    setRes(data.text.fullText);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h3>Convert to Text</h3>
+      <input type="file" onChange={identify} />
+      <p>{res}</p>
     </div>
   );
 }
