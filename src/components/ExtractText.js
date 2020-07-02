@@ -43,7 +43,7 @@ const ExtractText = () => {
         <div
           className="display"
           style={{
-            backgroundColor: show ? '#dedede' : '#fff',
+            backgroundColor: show ? '#ededed' : '#fff',
           }}
         >
           {res !== 'Loading' ? (
@@ -53,7 +53,7 @@ const ExtractText = () => {
                 readOnly
                 ref={textAreaRef}
                 style={{
-                  backgroundColor: show ? '#dedede' : '#fff',
+                  backgroundColor: show ? '#ededed' : '#fff',
                 }}
               />
               {show && (

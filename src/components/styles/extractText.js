@@ -42,6 +42,7 @@ export const Top = styled.div`
         outline: none;
         resize: none;
         padding: 10px;
+        color: #2f2f2f;
       }
       button {
         align-self: flex-end;
