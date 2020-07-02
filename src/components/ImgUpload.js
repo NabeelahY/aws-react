@@ -8,6 +8,8 @@ import download from '../utils/download';
 import config from '../aws-exports';
 import aws from '../config/aws';
 
+import { Bottom } from './styles/imgUpload';
+
 const ImgUpload = () => {
   const initialState = {
     loaded: 0,
@@ -15,7 +17,6 @@ const ImgUpload = () => {
     percent: 0,
   };
   const [progress, setProgress] = useState(initialState);
-
   const [file, setFile] = useState(null);
   const [url, setUrl] = useState(null);
 
@@ -40,8 +41,8 @@ const ImgUpload = () => {
   });
 
   return (
-    <div>
-      <h3>Upload Image</h3>
+    <Bottom>
+      <h3>Get a .txt file of Image Text</h3>
       <input
         type="file"
         accept="image/*"
@@ -49,14 +50,17 @@ const ImgUpload = () => {
           upload(e, setProgress, setFile);
         }}
       />
-      <Progress
-        strokeColor={{
-          '0%': '#108ee9',
-          '100%': '#87d068',
-        }}
-        percent={progress.percent}
-        success={{ strokeColor: '#gdg09' }}
-      />
+      {progress.percent > 1 && (
+        <Progress
+          strokeColor={{
+            '0%': '#108ee9',
+            '100%': '#87d068',
+          }}
+          percent={progress.percent}
+          format={(percent) => `${Math.floor(percent)}%`}
+          success={{ strokeColor: '#gdg09' }}
+        />
+      )}
 
       {url && (
         <Button
@@ -66,10 +70,10 @@ const ImgUpload = () => {
           size="small"
           href={url}
         >
-          Download
+          Download .txt file
         </Button>
       )}
-    </div>
+    </Bottom>
   );
 };
 

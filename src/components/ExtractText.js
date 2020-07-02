@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Predictions } from 'aws-amplify';
-import { Button, Spin } from 'antd';
+import { Button, Spin, Alert } from 'antd';
 import { CopyOutlined, LoadingOutlined } from '@ant-design/icons';
 import { Top } from './styles/extractText';
 
@@ -12,6 +12,7 @@ const ExtractText = () => {
   const antIcon = <LoadingOutlined style={{ fontSize: 30 }} spin />;
 
   const identify = async (event) => {
+    setShow(false);
     setRes('Loading');
     const {
       target: { files },
@@ -19,9 +20,9 @@ const ExtractText = () => {
 
     const file = files[0];
     const data = await Predictions.identify({
-      text: { source: { file }, format: 'PLAIN' },
+      text: { source: { file }, format: 'ALL' },
     });
-    console.log(data);
+    console.log(JSON.stringify(data.text.fullText, null, 2));
 
     setRes(data.text.fullText);
     setShow(true);
@@ -34,7 +35,7 @@ const ExtractText = () => {
   };
   return (
     <Top>
-      <h3>Convert to Text</h3>
+      <h3>Convert Image to Text</h3>
       <div className="upload">
         <div className="imgUpload">
           <input type="file" onChange={identify} id="uploadimg" />
@@ -43,7 +44,7 @@ const ExtractText = () => {
         <div
           className="display"
           style={{
-            backgroundColor: show ? '#ededed' : '#fff',
+            backgroundColor: show ? '#ededed' : '#f8f8f8',
           }}
         >
           {res !== 'Loading' ? (
@@ -53,7 +54,7 @@ const ExtractText = () => {
                 readOnly
                 ref={textAreaRef}
                 style={{
-                  backgroundColor: show ? '#ededed' : '#fff',
+                  backgroundColor: show ? '#ededed' : '#f8f8f8',
                 }}
               />
               {show && (
@@ -69,7 +70,13 @@ const ExtractText = () => {
               )}
             </>
           ) : (
-            <Spin tip="Extracting..." indicator={antIcon} />
+            <Spin indicator={antIcon}>
+              <Alert
+                message="Extracting..."
+                description="Extracted text can be seen and copied here"
+                type="info"
+              />
+            </Spin>
           )}
         </div>
       </div>

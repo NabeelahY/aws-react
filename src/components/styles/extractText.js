@@ -1,18 +1,20 @@
 import styled from 'styled-components';
 
 export const Top = styled.div`
-  width: 80%auto;
+  margin: 20px 0;
   h3 {
-    font-size: 32px;
+    font-size: 24px;
+    text-align: center;
   }
   .upload {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-content: space-around;
     .imgUpload {
-      width: 30%;
+      margin: 0 0 10px 0;
+      width: 100%;
       label {
         display: block;
-        line-height: 20;
         text-align: center;
         padding: 0.5em;
         font-size: 14px;
@@ -27,13 +29,14 @@ export const Top = styled.div`
         opacity: 0;
         z-index: -1;
         position: absolute;
+        width: 20px;
       }
     }
     .display {
       display: flex;
       flex-direction: column;
       height: 300px;
-      width: 40%;
+      width: 100%;
       border-radius: 4px;
       textarea {
         height: 90%;
@@ -46,6 +49,24 @@ export const Top = styled.div`
       }
       button {
         align-self: flex-end;
+      }
+    }
+  }
+
+  @media (min-width: 769px) {
+    h3 {
+      font-size: 32px;
+      text-align: left;
+    }
+
+    .upload {
+      flex-direction: row;
+      justify-content: space-between;
+      .imgUpload {
+        width: 40%;
+      }
+      .display {
+        width: 40%;
       }
     }
   }
