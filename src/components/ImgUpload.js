@@ -45,7 +45,7 @@ const ImgUpload = () => {
       <h3>Get a .txt file of Image Text</h3>
       <input
         type="file"
-        accept="image/*"
+        accept="image/jpeg, image/png"
         onChange={(e) => {
           upload(e, setProgress, setFile);
         }}

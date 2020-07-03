@@ -22,7 +22,6 @@ const ExtractText = () => {
     const data = await Predictions.identify({
       text: { source: { file }, format: 'ALL' },
     });
-    console.log(JSON.stringify(data.text.fullText, null, 2));
 
     setRes(data.text.fullText);
     setShow(true);
@@ -33,12 +32,18 @@ const ExtractText = () => {
     document.execCommand('copy');
     setCopySuccess('Copied!');
   };
+
   return (
     <Top>
       <h3>Convert Image to Text</h3>
       <div className="upload">
         <div className="imgUpload">
-          <input type="file" onChange={identify} id="uploadimg" />
+          <input
+            type="file"
+            accept="image/jpeg, image/png"
+            onChange={identify}
+            id="uploadimg"
+          />
           <label htmlFor="uploadimg">Upload a png or jpg image here</label>
         </div>
         <div
