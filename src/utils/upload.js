@@ -5,7 +5,6 @@ const upload = (event, setProgress, setFile) => {
 
   const type = file.type.split('/')[1];
   const fileName = new Date().getTime() + `.${type}`;
-  console.log(fileName);
 
   Storage.put(fileName, file, {
     contentType: 'image/jpeg',
@@ -17,13 +16,12 @@ const upload = (event, setProgress, setFile) => {
         loaded: progress.loaded,
         total: progress.total,
       }));
-      console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
     },
   })
     .then((data) => {
       setFile(data.key.split('.')[0]);
     })
-    .catch((err) => console.log(err.response));
+    .catch((err) => err.response);
 };
 
 export default upload;
