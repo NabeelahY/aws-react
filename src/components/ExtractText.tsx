@@ -8,17 +8,17 @@ const ExtractText = () => {
   const [res, setRes] = useState('');
   const [show, setShow] = useState(false);
   const [copySuccess, setCopySuccess] = useState('Copy');
-  const textAreaRef = useRef(null);
+  const textAreaRef = useRef<null | HTMLTextAreaElement>(null);
   const antIcon = <LoadingOutlined style={{ fontSize: 30 }} spin />;
 
-  const identify = async (event) => {
+  const identify = async (event: React.ChangeEvent<HTMLInputElement>) => {
     setShow(false);
     setRes('Loading');
     const {
       target: { files },
     } = event;
 
-    const file = files[0];
+    const file = files![0];
     const data = await Predictions.identify({
       text: { source: { file }, format: 'ALL' },
     });
@@ -28,7 +28,7 @@ const ExtractText = () => {
   };
 
   const copy = () => {
-    textAreaRef.current.select();
+    textAreaRef!.current!.select();
     document.execCommand('copy');
     setCopySuccess('Copied!');
   };
