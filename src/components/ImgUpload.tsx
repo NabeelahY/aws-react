@@ -9,20 +9,24 @@ import config from '../aws-exports';
 import aws from '../config/aws';
 
 import { Bottom } from './styles/imgUpload';
-
+interface state {
+  loaded: number | undefined;
+  total: number | undefined;
+  percent: number | undefined;
+}
 const ImgUpload = () => {
-  const initialState = {
+  const initialState: state = {
     loaded: 0,
     total: 0,
     percent: 0,
   };
   const [progress, setProgress] = useState(initialState);
-  const [file, setFile] = useState(null);
-  const [url, setUrl] = useState(null);
+  const [file, setFile] = useState<null | string>(null);
+  const [url, setUrl] = useState<null | string>(null);
 
   useEffect(() => {
     const { loaded, total } = progress;
-    let percentage = (loaded / total) * 100;
+    let percentage = (loaded! / total!) * 100;
     setProgress((p) => ({
       ...p,
       percent: percentage,
@@ -50,14 +54,14 @@ const ImgUpload = () => {
           upload(e, setProgress, setFile);
         }}
       />
-      {progress.percent > 1 && (
+      {progress!.percent! > 1 && (
         <Progress
           strokeColor={{
             '0%': '#108ee9',
             '100%': '#87d068',
           }}
           percent={progress.percent}
-          format={(percent) => `${Math.floor(percent)}%`}
+          format={(percent) => `${Math.floor(percent as number)}%` as string}
           success={{ strokeColor: '#gdg09' }}
         />
       )}
