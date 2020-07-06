@@ -21,7 +21,7 @@ const ImgUpload = () => {
     percent: 0,
   };
   const [progress, setProgress] = useState(initialState);
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<null | string>(null);
   const [url, setUrl] = useState<null | string>(null);
 
   useEffect(() => {
