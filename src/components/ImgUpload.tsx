@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Amplify from 'aws-amplify';
 import { Progress, Button } from 'antd';
 import { DownloadOutlined, RedoOutlined } from '@ant-design/icons';
@@ -23,6 +23,7 @@ const ImgUpload = () => {
   const [progress, setProgress] = useState(initialState);
   const [file, setFile] = useState<null | string>(null);
   const [url, setUrl] = useState<null | string>(null);
+  const fileUpload = useRef<any>();
 
   useEffect(() => {
     const { loaded, total } = progress;
@@ -48,6 +49,7 @@ const ImgUpload = () => {
     setProgress(initialState);
     setFile(null);
     setUrl(null);
+    if (fileUpload !== null) fileUpload.current.value = null;
   };
 
   return (
@@ -61,6 +63,7 @@ const ImgUpload = () => {
         onChange={(e) => {
           upload(e, setProgress, setFile);
         }}
+        ref={fileUpload}
       />
       {progress!.percent! > 1 && (
         <Progress
