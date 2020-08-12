@@ -24,6 +24,7 @@ export const Top = styled.div`
         border-radius: 4px;
         height: 300px;
         width: 100%;
+        cursor: pointer;
       }
       input[type='file'] {
         opacity: 0;

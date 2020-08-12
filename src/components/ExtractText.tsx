@@ -44,7 +44,7 @@ const ExtractText = () => {
             onChange={identify}
             id="uploadimg"
           />
-          <label htmlFor="uploadimg">Upload a png or jpg image here</label>
+          <label htmlFor="uploadimg">Click here to upload a png or jpg image</label>
         </div>
         <div
           className="display"

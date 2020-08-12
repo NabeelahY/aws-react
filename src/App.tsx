@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Layout, Divider } from 'antd';
 import AppStyles from './AppStyles';
 import ExtractText from './components/ExtractText';
 import ImgUpload from './components/ImgUpload';
@@ -25,7 +25,7 @@ function App() {
           </div>
           <div className="site-layout-content">
             <ExtractText />
-            <hr />
+            <Divider>OR</Divider>
             <ImgUpload />
           </div>
         </Content>

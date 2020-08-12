@@ -4,7 +4,6 @@ export const Bottom = styled.div`
   margin: 20px 0;
   h3 {
     font-size: 24px;
-    text-align: center;
   }
 
   input[type='file'] {

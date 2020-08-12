@@ -46,7 +46,9 @@ const ImgUpload = () => {
 
   return (
     <Bottom>
-      <h3>Get a .txt file of Image Text</h3>
+      <h3>
+        Download a <code>.txt</code> file of Image Text
+      </h3>
       <input
         type="file"
         accept="image/jpeg, image/png"
