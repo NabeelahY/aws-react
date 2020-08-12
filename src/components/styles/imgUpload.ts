@@ -15,6 +15,10 @@ export const Bottom = styled.div`
     margin: 0 0 20px 0;
   }
 
+  .success {
+    display: flex;
+    justify-content: space-between;
+  }
   @media (min-width: 769px) {
     h3 {
       font-size: 32px;

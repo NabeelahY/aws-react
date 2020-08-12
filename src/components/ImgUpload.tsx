@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Amplify from 'aws-amplify';
 import { Progress, Button } from 'antd';
-import { DownloadOutlined } from '@ant-design/icons';
+import { DownloadOutlined, RedoOutlined } from '@ant-design/icons';
 
 import upload from '../utils/upload';
 import download from '../utils/download';
@@ -44,6 +44,12 @@ const ImgUpload = () => {
     },
   });
 
+  const reset = () => {
+    setProgress(initialState);
+    setFile(null);
+    setUrl(null);
+  };
+
   return (
     <Bottom>
       <h3>
@@ -69,15 +75,26 @@ const ImgUpload = () => {
       )}
 
       {url && (
-        <Button
-          type="primary"
-          shape="round"
-          icon={<DownloadOutlined />}
-          size="small"
-          href={url}
-        >
-          Download .txt file
-        </Button>
+        <div className="success">
+          <Button
+            type="primary"
+            shape="round"
+            icon={<DownloadOutlined />}
+            size="small"
+            href={url}
+          >
+            Download .txt file
+          </Button>
+
+          <Button
+            shape="round"
+            icon={<RedoOutlined />}
+            size="small"
+            onClick={reset}
+          >
+            Reset
+          </Button>
+        </div>
       )}
     </Bottom>
   );
